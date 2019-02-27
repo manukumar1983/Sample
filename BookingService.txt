@@ -1,0 +1,24 @@
+
+public class BookService {
+	
+	Integer getTickets(BookDetailsBean bookingDetails) {
+		
+		BookValidator BookingValidator=new BookValidator();
+		
+		try {
+			BookingValidator.isValidEmail(bookingDetails.getEmail());
+			BookingValidator.isValidName(bookingDetails.getName());
+			BookingValidator.isValidTicket(bookingDetails.getNoOfTickets());
+			UserInterface.bookingList.add(bookingDetails);
+			bookingDetails.setBookingID(UserInterface.bookingList.size());
+			
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		return bookingDetails.getBookingID() ;
+		
+	}
+
+}

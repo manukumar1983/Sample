@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class UserInterface {
+	public static List<BookDetailsBean> bookingList;
+	
+	public static void main(String args[]) {
+		
+		bookingList=new ArrayList<>();
+		Scanner userInputScan=new Scanner(System.in);
+		BookDetailsBean Booking=new BookDetailsBean();
+		System.out.println("Enter Name");
+		Booking.setName(userInputScan.nextLine());
+		System.out.println("Enter Email");
+		Booking.setEmail(userInputScan.nextLine());
+		System.out.println("Enter address");
+		Booking.setAddress(userInputScan.nextLine());
+		System.out.println("Enter Mobile Number");
+		Booking.setMobileNumber(userInputScan.nextLong());		
+		System.out.println("Enter event (carlsonReturns-CR|JING on the way-JW) (Type CR|JW)");
+		Booking.setEvents(userInputScan.nextLine());
+		userInputScan.nextLine();
+		System.out.println("Number of tickets (limited to 6 per user)");
+		Booking.setNoOfTickets(userInputScan.nextInt());
+		BookService Bs=new BookService();
+		
+		System.out.println("Booking done with booking id "+Bs.getTickets(Booking));
+		
+		userInputScan.close();
+		
+	}
+
+}

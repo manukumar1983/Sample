@@ -1,0 +1,62 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class BookValidator {
+	
+	//To Validate first Name
+	
+	boolean isValidName(String Name) throws Exception {
+		
+		Pattern namePattern=Pattern.compile("([a-zA-Z]+\\s?)+\\.?");
+		Matcher namemacther=namePattern.matcher(Name);
+		if(namemacther.matches()) {
+			return true;
+			
+		}else {
+			throw new Exception("Invalid Name");
+			
+		}
+		
+	}
+	
+	//To Validate Email ID
+	
+	boolean isValidEmail(String Email) throws Exception {		
+		
+		String[] firstpart=Email.split("@");		
+		
+		if(firstpart[0].charAt(0)>='a'&&firstpart[0].charAt(0)<='z'||firstpart[0].charAt(0)>='A'&&firstpart[0].charAt(0)<='Z') {
+			Pattern emailPattern=Pattern.compile("[a-zA-Z(0-9_.)?]+[@]+[a-zA-Z]+[.]+(com)");
+			Matcher emailmatacher=emailPattern.matcher(Email);
+			if(emailmatacher.matches()) {
+				return true;
+			}else {
+				throw new Exception("Inavlid Email");
+			}
+			
+			
+		}else {
+			throw new Exception("Inavlid Email");
+		}
+		
+	}
+		
+	
+	//To Validate NoofTickets
+		boolean isValidTicket(Integer noOfTickets) throws Exception {
+			if(noOfTickets.intValue()>=1 && noOfTickets.intValue()<=6) {
+				return true;
+			}else {
+				throw new Exception("Tickets are limited 6 per user");
+			}
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+
+
